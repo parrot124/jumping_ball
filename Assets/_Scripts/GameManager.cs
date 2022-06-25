@@ -4,12 +4,12 @@ using UnityEngine;
 
 public static class GameManager
 {
-    private static int _levelNumber = 1;
-    public static int LevelNumber => _levelNumber;
+    private static int _level = 1;
+    public static int Level => _level;
     public static void NextLevel()
     {
-        _levelNumber++;
+        _level++;
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync($"SampleScene");
-        Debug.Log(_levelNumber);
+        Debug.Log($"Уровень {Level}");
     }
 }

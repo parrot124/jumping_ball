@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9195634823763156566}
   - component: {fileID: 6639071124291250035}
   - component: {fileID: 6928380705928611214}
+  - component: {fileID: -1142475582594728193}
   m_Layer: 0
   m_Name: ConeFar
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-1142475582594728193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5845814933176913397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21953583332ee454bb7e48fe1abe620a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

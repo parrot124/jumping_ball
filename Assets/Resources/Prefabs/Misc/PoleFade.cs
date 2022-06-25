@@ -8,14 +8,13 @@ public class PoleFade : MonoBehaviour
     public event Action OnPlanePass;
     private Material material;
 
-    //wtf
-
     internal int _planesPassed = 0;
     internal int _planesInLevel => LevelManager.levelManager.PlanesInLevel;
     void Start()
     {
         OnPlanePass += () =>
         {
+            //wtf
             _planesPassed++;
             material.color = Color.green * (_planesPassed / (float)_planesInLevel) +
             Color.red * ((_planesInLevel - _planesPassed) / (float)_planesInLevel);

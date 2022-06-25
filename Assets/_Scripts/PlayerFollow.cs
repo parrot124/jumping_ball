@@ -10,7 +10,6 @@ public class PlayerFollow : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) throw new UnityException();
     }
 
     void Update()

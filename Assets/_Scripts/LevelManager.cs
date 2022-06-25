@@ -9,17 +9,18 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject PolePrefab;
     [SerializeField] private List<GameObject> PlanePrefab;
     [SerializeField] private GameObject FinishPrefab;
+    [SerializeField] private GameObject SpikePrefab;
 
     private static LevelManager manager;
     private int _planesInLevel;
     private GameObject[] plane;
     private GameObject pole;
-    private float rotationParemeter = 360f;
+    private float rotationFactor = 360f;
     private int planesPassed;
 
 
     public static LevelManager levelManager => manager;
-
+    public  GameObject Pole => pole;
     public void OnLevelFinished()
     {
         GameManager.NextLevel();
@@ -35,10 +36,9 @@ public class LevelManager : MonoBehaviour
         pole = Instantiate(PolePrefab, Vector3.zero, Quaternion.identity);
 
         //инициализация платформочек вот вот этих вот вот
-        int planesCount = FloorToInt(Log(GameManager.LevelNumber*GameManager.LevelNumber + 2, 2));
+        int planesCount = FloorToInt(Log(GameManager.Level*GameManager.Level + 2, 2));
         plane = new GameObject[planesCount+1];
 
-        //
         pole.transform.localScale = new Vector3(pole.transform.localScale.x, planesCount * 2,
             pole.transform.localScale.z);
 
@@ -47,6 +47,15 @@ public class LevelManager : MonoBehaviour
         {
             plane[i] = Instantiate(PlanePrefab[Random.Range(0, PlanePrefab.Capacity)],
                        new Vector3(0,-i<<1,0), Quaternion.Euler(0,Random.Range(0,360), 0));
+
+            //ебучая хуйня изза которой всё ломается
+            /*if (Random.Range(0f, 1f) > 0.5f)
+            {
+                print("SPIKE!!");
+                GameObject spike = Instantiate(SpikePrefab, 
+                    new Vector3(0, (-i << 1) + 0.25f, 0),
+                    Quaternion.Euler(0, Random.Range(0, 360), 0));
+            }*/
 
             plane[i].transform.parent = pole.transform;
         }
@@ -69,7 +78,7 @@ public class LevelManager : MonoBehaviour
     public void RotatePole(float k)
     {
         pole.transform.rotation = Quaternion.Euler(0,
-            rotationParemeter * k * Time.deltaTime + pole.transform.rotation.eulerAngles.y,
+            rotationFactor * k * Time.deltaTime + pole.transform.rotation.eulerAngles.y,
             0);
     }
 }

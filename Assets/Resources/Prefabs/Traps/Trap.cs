@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using static LevelManager;
+
 public class Trap : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //тут должна быть логика шипа но мне впадлу чёто делать
+    private void Start()
     {
-        
-    }
+        return;
+        //while (!Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.25f))
+        //    transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //gameObject.tag = "Trap";
+        //transform.parent = levelManager.Pole.transform;
     }
 }

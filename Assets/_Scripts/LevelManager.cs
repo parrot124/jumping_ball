@@ -48,14 +48,15 @@ public class LevelManager : MonoBehaviour
             plane[i] = Instantiate(PlanePrefab[Random.Range(0, PlanePrefab.Capacity)],
                        new Vector3(0,-i<<1,0), Quaternion.Euler(0,Random.Range(0,360), 0));
 
-            //ебучая хуйня изза которой всё ломается
-            /*if (Random.Range(0f, 1f) > 0.5f)
+            //ебучая хуйня из-за которой всё ломается
+            if (Random.Range(0f, 1f) > 0.5f)
             {
-                print("SPIKE!!");
                 GameObject spike = Instantiate(SpikePrefab, 
                     new Vector3(0, (-i << 1) + 0.25f, 0),
                     Quaternion.Euler(0, Random.Range(0, 360), 0));
-            }*/
+
+                spike.transform.parent = pole.transform;
+            }
 
             plane[i].transform.parent = pole.transform;
         }
